@@ -23,9 +23,9 @@ class UserSelectMenuBuilder extends BuildersUserSelectMenu {
   }
 }
 
-module.exports = UserSelectMenuBuilder;
+exports.UserSelectMenuBuilder = UserSelectMenuBuilder;
 
 /**
  * @external BuildersUserSelectMenu
- * @see {@link https://discord.js.org/docs/packages/rest/stable/UserSelectMenuBuilder:Class}
+ * @see {@link https://discord.js.org/docs/packages/builders/stable/UserSelectMenuBuilder:Class}
  */

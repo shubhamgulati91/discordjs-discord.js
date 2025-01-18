@@ -41,9 +41,9 @@ class StringSelectMenuOptionBuilder extends BuildersSelectMenuOption {
   }
 }
 
-module.exports = StringSelectMenuOptionBuilder;
+exports.StringSelectMenuOptionBuilder = StringSelectMenuOptionBuilder;
 
 /**
  * @external BuildersSelectMenuOption
- * @see {@link https://discord.js.org/docs/packages/builders/stable/SelectMenuOptionBuilder:Class}
+ * @see {@link https://discord.js.org/docs/packages/builders/stable/StringSelectMenuOptionBuilder:Class}
  */
