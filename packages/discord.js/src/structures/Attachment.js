@@ -1,6 +1,7 @@
 'use strict';
 
-const { basename, flatten } = require('../util/Util');
+const { AttachmentFlagsBitField } = require('../util/AttachmentFlagsBitField.js');
+const { basename, flatten } = require('../util/Util.js');
 
 /**
  * @typedef {Object} AttachmentPayload
@@ -76,8 +77,9 @@ class Attachment {
 
     if ('content_type' in data) {
       /**
-       * The media type of this attachment
+       * The media (MIME) type of this attachment
        * @type {?string}
+       * @see {@link https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types}
        */
       this.contentType = data.content_type;
     } else {
@@ -121,6 +123,27 @@ class Attachment {
     } else {
       this.waveform ??= null;
     }
+
+    if ('flags' in data) {
+      /**
+       * The flags of this attachment
+       * @type {Readonly<AttachmentFlagsBitField>}
+       */
+      this.flags = new AttachmentFlagsBitField(data.flags).freeze();
+    } else {
+      this.flags ??= new AttachmentFlagsBitField().freeze();
+    }
+
+    if ('title' in data) {
+      /**
+       * The title of this attachment
+       * <info>This will only be available if the attachment name contains special characters.</info>
+       * @type {?string}
+       */
+      this.title = data.title;
+    } else {
+      this.title ??= null;
+    }
   }
 
   /**
@@ -137,4 +160,4 @@ class Attachment {
   }
 }
 
-module.exports = Attachment;
+exports.Attachment = Attachment;
